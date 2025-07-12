@@ -66,11 +66,8 @@ body{
 /* 4 Hero section */
 .hero-section {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('designs/BG-3.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,7 +75,54 @@ body{
     color: var(--ivory-pearl);
 }
 
+.background-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.bg1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                      url('designs/BG-3.png');
+    animation: crossfade 12s ease-in-out infinite;
+}
+
+.bg2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                      url('designs/BG-4.jpg');
+    animation: crossfade 12s ease-in-out infinite -6s; /* Offset by half duration */
+}
+
+@keyframes crossfade {
+    0%, 33% {
+        opacity: 1;
+    }
+    45%, 88% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Ensure hero content stays on top */
 .hero-content {
+    position: relative;
+    z-index: 2;
     padding: 2rem;
     max-width: 800px;
 }
@@ -94,9 +138,9 @@ body{
     opacity: 0.9;
 }
 
-/* Add responsive adjustments */
+/* Update responsive styles */
 @media (max-width: 768px) {
-    .hero-section {
+    .bg-image {
         background-attachment: scroll;
     }
     
