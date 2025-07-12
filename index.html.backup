@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleByDIVYA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">StyleByDIVYA</div>
+        <nav>
+            <!-- Move hamburger inside nav -->
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#story">Brand Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-text">
+            <h1>Welcome to StyleByDIVYA</h1>
+            <p>Where Aesthetic Meets Elegance</p>
+        </div>
+    </section>
+
+    <section id="collection" class="collection-section">
+        <h2>Our Collection</h2>
+        <div class="carousel-container">
+            <button class="carousel-arrow prev" aria-label="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+            </button>
+
+            <div class="gallery">
+                <!-- Repeat this structure for each design -->
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="designs/D6.jpg" alt="Design 6">
+                        <div class="design-overlay">
+                            <h3>Viraasat Varnika</h3>
+                        </div>
+                    </div>
+                    <h3 class="design-title">Viraasat Varnika</h3>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="designs/D-7.jpg" alt="Design 6">
+                        <div class="design-overlay">
+                            <h3>PhoolSaaz</h3>
+                        </div>
+                    </div>
+                    <h3 class="design-title">PhoolSaaz</h3>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="designs/D-8.jpg" alt="Design 6">
+                        <div class="design-overlay">
+                            <h3>Revive Grace</h3>
+                        </div>
+                    </div>
+                    <h3 class="design-title">Revive Grace</h3>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="designs/D-10.jpg" alt="Design 6">
+                        <div class="design-overlay">
+                            <h3> Noor-e-Ruhani</h3>
+                        </div>
+                    </div>
+                    <h3 class="design-title"> Noor-e-Ruhani</h3>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image">
+                        <img src="designs/D-11.jpg" alt="Design 6">
+                        <div class="design-overlay">
+                            <h3>Aabha</h3>
+                        </div>
+                    </div>
+                    <h3 class="design-title">Aabha</h3>
+                </div>
+                <!-- Add more design-cards as needed -->
+            </div>
+
+            <button class="carousel-arrow next" aria-label="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <section id="story" class="story-section">
+        <div class="story-container">
+            <h2 class="story-heading">Brand Story</h2>
+            <div class="story-content">
+                <p class="story-intro">
+                    Some sarees are not just fabric. They are memories.
+                    A soft pallu that once hugged your mother's shoulder…
+                    A border your dadi stitched with her dreams…
+                </p>
+                <p class="story-main">
+                    At StyleByDIVYA, we don't believe in discarding those stories.
+                    We believe in reviving them — with style.
+                </p>
+                <p class="story-details">
+                    Founded by Divya, a dreamer with a love for emotions, ethnic wear, and elegance —
+                    StyleByDIVYA is a slow fashion brand built on the idea that every old saree deserves a second life.
+                </p>
+                <div class="story-highlights">
+                    <p>✨ We don't just design clothes.</p>
+                    <p>✨ We listen to stories.</p>
+                    <p>✨ We work with local artisans.</p>
+                    <p>✨ We celebrate your heritage.</p>
+                </div>
+                <p class="story-tagline">
+                    Old Sarees, New Stories.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Get in Touch</h2>
+            <p class="contact-intro">Have a story to share? Let's talk about giving your cherished sarees new life.</p>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" id="name" required>
+                    <label for="name">Your Name</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email Address</label>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" id="message" rows="5" required></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 StyleByDIVYA. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
