@@ -148,4 +148,36 @@ document.addEventListener("DOMContentLoaded", function () {
             updateArrowVisibility(); // Initial check on load
         }
     }
+
+    // --- Contact Form Submission ---
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                } else {
+                    alert('Error sending message. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An unexpected error occurred. Please try again later.');
+            });
+        });
+    }
 });
