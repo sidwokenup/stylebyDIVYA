@@ -64,22 +64,50 @@ body{
 .nav-links a:hover{color:var(--champagne-gold);}  /* subtle gold glow */
 
 /* 4 Hero section */
-.hero-section{
-  display:flex;justify-content:center;align-items:center;
-  height:90vh;position:relative;text-align:center;
-  color:var(--deep-maroon);  /* headings sit in Deep Maroon */
-  overflow:hidden;
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('designs/BG-3.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--ivory-pearl);
 }
-.hero-section::before,
-.hero-section::after{
-  content:"";position:absolute;top:0;width:50%;height:100%;
-  background-size:cover;background-position:center;opacity:.25;z-index:1;
+
+.hero-content {
+    padding: 2rem;
+    max-width: 800px;
 }
-.hero-section::before{left:0;background-image:url('designs/BG-1.jpg');}
-.hero-section::after{right:0;background-image:url('designs/BG-2.jpg');}
-.hero-text{position:relative;z-index:2;}
-.hero-text h1{font-size:3rem;margin-bottom:.5rem;animation:fadeInUp 1s;}
-.hero-text p{font-size:1.5rem;animation:fadeInUp 1.3s;}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        background-attachment: scroll;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+}
 
 /* 5 Section headings & copy */
 .collection-section,
