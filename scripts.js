@@ -42,17 +42,24 @@ document.addEventListener("DOMContentLoaded", function () {
         // Close menu when clicking links
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                
+                // Allow external links to work normally
+                if (href.startsWith('http')) {
+                    return;
+                }
+
+                // Handle internal navigation
                 e.preventDefault();
-                const targetId = link.getAttribute('href');
                 toggleMenu(false);
                 
                 // Smooth scroll after menu closes
                 setTimeout(() => {
-                    const targetSection = document.querySelector(targetId);
+                    const targetSection = document.querySelector(href);
                     if (targetSection) {
                         targetSection.scrollIntoView({ behavior: 'smooth' });
                     }
-                }, 300); // Match transition timing
+                }, 300);
             });
         });
 
