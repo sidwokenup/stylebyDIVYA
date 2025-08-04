@@ -17,49 +17,76 @@ document.querySelectorAll('.gallery img, .story-section, .contact-section').forE
 
 // Mobile menu functionality
 document.addEventListener("DOMContentLoaded", function () {
-    // Improved element selection
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
     if (hamburger && navLinks) {
-        // Toggle menu function - simplified
         const toggleMenu = (force = null) => {
             const isActive = force !== null ? force : !hamburger.classList.contains('active');
-            
             hamburger.classList.toggle('active', isActive);
             navLinks.classList.toggle('active', isActive);
             body.style.overflow = isActive ? 'hidden' : 'auto';
         };
 
-        // Hamburger click handler
+        // Hamburger click
         hamburger.addEventListener('click', (e) => {
-            e.preventDefault();
             e.stopPropagation();
             toggleMenu();
         });
 
-        // Close menu when clicking links
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                
-                // Allow external links to work normally
-                if (href.startsWith('http')) {
-                    return;
-                }
+        // Product card navigation
+        const productLinks = document.querySelectorAll('.design-card a');
+        productLinks.forEach(link => {
+            ['click', 'touchend'].forEach(eventType => {
+                link.addEventListener(eventType, (e) => {
+                    e.stopPropagation();
+                    const href = link.getAttribute('href');
+                    
+                    if (!href) return;
 
-                // Handle internal navigation
-                e.preventDefault();
-                toggleMenu(false);
-                
-                // Smooth scroll after menu closes
-                setTimeout(() => {
-                    const targetSection = document.querySelector(href);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    // Direct navigation for product pages
+                    if (href.endsWith('.html')) {
+                        window.location.href = href;
                     }
-                }, 300);
+                });
+            });
+        });
+
+        // Navigation menu links
+        navLinks.querySelectorAll('a').forEach(link => {
+            ['click', 'touchend'].forEach(eventType => {
+                link.addEventListener(eventType, (e) => {
+                    const href = link.getAttribute('href');
+                    
+                    // Handle external links
+                    if (href.startsWith('http')) {
+                        toggleMenu(false);
+                        return;
+                    }
+
+                    // Handle product pages
+                    if (href.endsWith('.html')) {
+                        e.preventDefault();
+                        toggleMenu(false);
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                        return;
+                    }
+
+                    // Handle internal navigation
+                    e.preventDefault();
+                    toggleMenu(false);
+                    
+                    const targetId = href.replace('#', '');
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                    }
+                });
             });
         });
 
@@ -68,13 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (navLinks.classList.contains('active') && 
                 !hamburger.contains(e.target) && 
                 !navLinks.contains(e.target)) {
-                toggleMenu(false);
-            }
-        });
-
-        // Handle escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                 toggleMenu(false);
             }
         });
