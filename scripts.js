@@ -1,22 +1,24 @@
-// Intersection Observer for scroll animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
-    });
-}, {
-    threshold: 0.1
-});
-
-// Add observer to elements
-document.querySelectorAll('.gallery img, .story-section, .contact-section').forEach(el => {
-    el.classList.add('hidden');
-    observer.observe(el);
-});
-
-// Mobile menu functionality
 document.addEventListener("DOMContentLoaded", function () {
+    // --- Intersection Observer for scroll animations ---
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                // Unobserve the element after it has been shown to improve performance
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // Add observer to elements that should fade in on scroll
+    document.querySelectorAll('.gallery img, .story-section, .contact-section').forEach(el => {
+        el.classList.add('hidden');
+        observer.observe(el);
+    });
+
+    // --- Mobile menu functionality ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
@@ -30,64 +32,43 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Hamburger click
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
-
-        // Product card navigation
-        const productLinks = document.querySelectorAll('.design-card a');
-        productLinks.forEach(link => {
-            ['click', 'touchend'].forEach(eventType => {
-                link.addEventListener(eventType, (e) => {
-                    e.stopPropagation();
-                    const href = link.getAttribute('href');
-                    
-                    if (!href) return;
-
-                    // Direct navigation for product pages
-                    if (href.endsWith('.html')) {
-                        window.location.href = href;
-                    }
-                });
-            });
-        });
+        hamburger.addEventListener('click', () => toggleMenu());
 
         // Navigation menu links
         navLinks.querySelectorAll('a').forEach(link => {
-            ['click', 'touchend'].forEach(eventType => {
-                link.addEventListener(eventType, (e) => {
-                    const href = link.getAttribute('href');
-                    
-                    // Handle external links
-                    if (href.startsWith('http')) {
-                        toggleMenu(false);
-                        return;
-                    }
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                
+                // Handle external links (starting with http)
+                if (href.startsWith('http')) {
+                    return; // Let the default behavior handle external links
+                }
 
-                    // Handle product pages
-                    if (href.endsWith('.html')) {
-                        e.preventDefault();
-                        toggleMenu(false);
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 300);
-                        return;
-                    }
-
-                    // Handle internal navigation
+                // Handle navigation back to main page sections
+                if (href.includes('#')) {
                     e.preventDefault();
                     toggleMenu(false);
                     
-                    const targetId = href.replace('#', '');
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        setTimeout(() => {
+                    // If we're on a product page, go back to main page first
+                    const path = window.location.pathname;
+                    if (path.includes('.html') && !path.endsWith('/index.html') && path !== '/') {
+                         window.location.href = 'index.html' + href;
+                    } else {
+                        const targetId = href.replace('#', '');
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }, 300);
+                        }
                     }
-                });
+                }
             });
+        });
+
+        // Handle browser back button
+        window.addEventListener('popstate', function(e) {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu(false);
+            }
         });
 
         // Close menu when clicking outside
@@ -98,39 +79,56 @@ document.addEventListener("DOMContentLoaded", function () {
                 toggleMenu(false);
             }
         });
-    }
-});
 
-// Carousel Navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const gallery = document.querySelector('.gallery');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const nextBtn = document.querySelector('.carousel-arrow.next');
-    const cardWidth = 300; // Match with CSS flex-basis
-
-    function scrollGallery(direction) {
-        const scrollAmount = direction === 'next' ? cardWidth + 32 : -(cardWidth + 32);
-        gallery.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu(false);
+            }
         });
     }
 
-    prevBtn?.addEventListener('click', () => scrollGallery('prev'));
-    nextBtn?.addEventListener('click', () => scrollGallery('next'));
+    // --- Carousel Navigation ---
+    const gallery = document.querySelector('.gallery');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn =  document.querySelector('.carousel-arrow.next');
 
-    // Optional: Hide arrows at scroll limits
-    const updateArrowVisibility = () => {
-        if (prevBtn && nextBtn) {
-            prevBtn.style.opacity = gallery.scrollLeft <= 0 ? '0.5' : '1';
-            nextBtn.style.opacity = 
-                gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1 
-                    ? '0.5' 
-                    : '1';
+    // Only initialize carousel if all elements are present
+    if (gallery && prevBtn && nextBtn) {
+        const firstCard = gallery.querySelector('img');
+
+        // Only setup carousel if there are cards to scroll
+        if (firstCard) {
+            const scrollGallery = (direction) => {
+                // Dynamically get card width and gap for robust scrolling
+                const galleryStyles = window.getComputedStyle(gallery);
+                const cardGap = parseFloat(galleryStyles.gap) || 0;
+                const cardWidth = firstCard.offsetWidth;
+                
+                const scrollAmount = direction === 'next' ? cardWidth + cardGap : -(cardWidth + cardGap);
+                gallery.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            };
+
+            prevBtn.addEventListener('click', () => scrollGallery('prev'));
+            nextBtn.addEventListener('click', () => scrollGallery('next'));
+
+            // Hide/show arrows at scroll limits and update cursor
+            const updateArrowVisibility = () => {
+                // Use a small buffer for floating point inaccuracies
+                const scrollEnd = gallery.scrollWidth - gallery.clientWidth;
+                prevBtn.style.opacity = gallery.scrollLeft < 1 ? '0.5' : '1';
+                prevBtn.style.cursor = gallery.scrollLeft < 1 ? 'default' : 'pointer';
+                nextBtn.style.opacity = gallery.scrollLeft >= scrollEnd - 1 ? '0.5' : '1';
+                nextBtn.style.cursor = gallery.scrollLeft >= scrollEnd - 1 ? 'default' : 'pointer';
+            };
+
+            gallery.addEventListener('scroll', updateArrowVisibility);
+            window.addEventListener('resize', updateArrowVisibility);
+            updateArrowVisibility(); // Initial check on load
         }
-    };
-
-    gallery?.addEventListener('scroll', updateArrowVisibility);
-    window.addEventListener('resize', updateArrowVisibility);
-    updateArrowVisibility();
+    }
+});
 });
