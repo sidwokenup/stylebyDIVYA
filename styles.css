@@ -775,6 +775,7 @@ footer{
         padding: 2rem 0;
         transition: 0.3s ease;
         height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -798,15 +799,14 @@ footer{
 }
 
 @media (max-width: 768px) {
+    .gallery {
+        gap: 1rem;
+    }
+
     .design-card {
-        position: relative;
-        z-index: 1;
+        flex: 0 0 80%;
+        scroll-snap-align: center;
     }
-    
-    .design-overlay {
-        z-index: 3;
-    }
-}
 
 /* Reviews Section */
 .reviews-section {
