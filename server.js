@@ -2,9 +2,16 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const cors = require("cors"); // Import the cors package
+
 dotenv.config();
+
 const app = express();
 const port = 3000;
+
+// Enable CORS for all routes
+app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.post("/send-email", (req, res) => {
