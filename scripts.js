@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert('Message sent successfully!');
                     contactForm.reset();
                 } else {
-                    alert('Error sending message. Please try again later.');
+                    alert(result.message || 'Error sending message. Please try again later.');
                 }
             })
             .catch(error => {
