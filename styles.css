@@ -345,37 +345,71 @@ nav {
 }
 
 /* 7 Story paragraph tweaks */
-.story-section p{max-width:700px;margin:0 auto;font-size:1.2rem;line-height:1.8;}
+.story-section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
 
 /* Brand Story Section Styles */
 .story-section {
     background-color: #F6F1EB;
     padding: 6rem 2rem;
     color: #2E2E2E;
+    overflow: hidden; /* Prevents scrollbars during animation */
 }
 
 .story-container {
-    max-width: 800px;
+    max-width: 900px; /* Increased max-width for better spacing */
     margin: 0 auto;
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* Adjust the gap to change the space between the text and image */
+    gap: 10rem; 
+}
+
+.story-content {
+    flex: 1; /* Takes up remaining space */
+    text-align: left;
+}
+
+.story-image {
+    /* To change the size of the image, adjust the width value below */
+    flex: 0 0 400px; /* Fixed width for the image */
+    /* To maintain a perfect circle, this height should be the same as the width above */
+    height: 400px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    order: 2; /* Image appears on the right */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    position: relative; /* This is needed to adjust position */
+
+    /* --- Adjust image position --- */
+    /* You must use a unit like px, rem, or %. For example: 10px or -0.5rem */
+    /* Move down (positive value) or up (negative value) */
+    top: -100px;
+    /* Move right (positive value) or left (negative value) */
+    left: 20px;
+}
+
+.story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the circular frame */
 }
 
 .story-heading {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: #4B6043;
-    text-align: center;
-    margin-bottom: 3rem;
-    transform: translateY(-30px);
-    opacity: 0;
-    animation: slideDown 0.8s ease-out forwards;
+    margin-bottom: 1.5rem;
 }
 
-.story-content {
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.3s forwards;
+.story-content p {
+    margin-bottom: 1.5rem;
 }
 
 .story-intro {
@@ -385,20 +419,19 @@ nav {
     color: #4B6043;
 }
 
-.story-main {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
+.story-main,
 .story-details {
+    font-family: 'Playfair Display', 'Georgia', 'Lora', serif;
+    font-size: 1.15rem;
     margin-bottom: 2rem;
 }
 
 .story-highlights {
     background: rgba(75, 96, 67, 0.05);
-    padding: 2rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 12px;
     margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .story-highlights p {
@@ -406,44 +439,65 @@ nav {
 }
 
 .story-tagline {
-    text-align: center;
+    text-align: left;
     font-size: 1.3rem;
     font-weight: 500;
     color: #4B6043;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
-/* Animations */
-@keyframes slideDown {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
+/* Staggered Animation on Scroll */
+.story-container > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.story-container.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger the animation for child elements */
+.story-container.is-visible > *:nth-child(1) { transition-delay: 0.1s; }
+.story-container.is-visible > *:nth-child(2) { transition-delay: 0.2s; }
+
+/* Responsive adjustments for the story section */
+@media (max-width: 768px) {
+    .story-container {
+        flex-direction: column;
+        gap: 2rem;
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+
+    .story-image {
+        order: 1; /* Image appears on top on mobile */
+        margin-bottom: 0; /* Remove margin-bottom */
+        width: 250px; /* Reduce image size for mobile */
+        height: 250px; /* Reduce image size for mobile */
+        flex-basis: auto; /* Reset flex-basis */
+        top: 0; /* Reset position */
+        left: 0; /* Reset position */
+    }
+
+    .story-content {
+        order: 2; /* Text appears below the image */
+        text-align: center; /* Center text on mobile */
+    }
+
+    .story-heading {
+        font-size: 2rem;
+    }
+
+    .story-main,
+    .story-details {
+        font-size: 1rem;
+    }
+
+    .story-tagline {
+        text-align: center;
     }
 }
 
-@keyframes fadeUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 /* 8 Contact form */
 .contact-section {
@@ -551,6 +605,17 @@ footer{
 @keyframes fadeInUp{
   from{transform:translateY(20px);opacity:0;}
   to{transform:translateY(0);opacity:1;}
+}
+
+@keyframes fadeUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Product Page Styles */

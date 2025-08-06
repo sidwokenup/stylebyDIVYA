@@ -13,10 +13,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Add observer to elements that should fade in on scroll
-    document.querySelectorAll('.gallery img, .story-section, .contact-section').forEach(el => {
+    document.querySelectorAll('.gallery img, .contact-section').forEach(el => {
         el.classList.add('hidden');
         observer.observe(el);
     });
+
+    // --- Intersection Observer for Brand Story Section ---
+    const storyObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.5 // Trigger when 50% of the element is visible
+    });
+
+    const storyContainer = document.querySelector('.story-container');
+    if (storyContainer) {
+        storyObserver.observe(storyContainer);
+    }
+
 
     // --- Mobile menu functionality ---
     const hamburger = document.querySelector('.hamburger');
