@@ -275,13 +275,476 @@ h1 {
         transform: translateX(320px) scale(0.7);   /* Adjusted position for new size */
     }
 
-    .logo {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 10px;
-    }
-
     .logo img {
         height: 120px; /* Increased from 60px */
+    }
+}
+
+/* New Section Styles */
+.section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#collection h2 {
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    color: #fff;
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin: 0 auto;
+    width: fit-content;
+    text-align: center;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #61dafb; /* A subtle accent color */
+    border-radius: 2px;
+}
+
+/* Collection Section */
+#collection {
+    background-color: #1a1a1a;
+    padding-top: 80px; /* Added for vertical spacing */
+    padding-bottom: 80px; /* Added for vertical spacing */
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.gallery {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.gallery::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.design-card {
+    flex: 0 0 300px; /* Fixed card width */
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #282828;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.design-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.design-card .design-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.design-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.design-card:hover .design-image img {
+    transform: scale(1.05);
+}
+
+/* Option 1: Always visible title */
+.design-title {
+    padding: 1rem;
+    margin: 0;
+    text-align: center;
+    color: #61dafb;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Option 2: Hover overlay effect */
+.design-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(97, 218, 251, 0.85); /* Using accent color with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.design-overlay h3 {
+    color: #121212;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.design-card:hover .design-overlay {
+    opacity: 1;
+}
+
+.design-card:hover .design-overlay h3 {
+    transform: translateY(0);
+}
+
+/* New styles for link inside design-card */
+.design-card a {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Carousel Navigation */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow svg {
+    fill: #2c2c2c;
+    transition: fill 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-arrow:hover svg {
+    fill: #fff;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* About Section */
+#about {
+    background-color: #121212;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    text-align: left;
+}
+
+.about-text {
+    max-width: 800px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations for About Section */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments for new sections */
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 60px 20px;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .carousel-container {
+        padding: 0 1rem;
+    }
+
+    .gallery {
+        gap: 1rem;
+    }
+
+    .design-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+
+    .design-card img {
+        /* Removed fixed height to rely on aspect-ratio and object-fit */
+    }
+
+    .design-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .design-card p {
+        font-size: 0.95rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .carousel-arrow.prev {
+        left: 0.5rem; /* Adjusted for mobile */
+    }
+
+    .carousel-arrow.next {
+        right: 0.5rem; /* Adjusted for mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 40px 15px;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .design-card img {
+        /* Removed fixed height to rely on aspect-ratio and object-fit */
+    }
+
+    .design-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .design-card p {
+        font-size: 0.9rem;
+    }
+
+    .about-content {
+        gap: 30px;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: #0d0d0d; /* Slightly darker background for distinction */
+    color: #e0e0e0; /* Light text color */
+    padding: 60px 40px;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.footer-logo img {
+    height: 100px; /* Adjust as needed */
+    width: auto;
+    display: block;
+}
+
+.footer-social,
+.footer-contact,
+.footer-links {
+    flex: 1;
+    min-width: 250px; /* Ensure columns don't get too narrow */
+}
+
+.site-footer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #61dafb; /* Accent color for headings */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.site-footer h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #61dafb;
+    border-radius: 2px;
+}
+
+.footer-social .social-icons {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.footer-social .social-icons a {
+    color: #ffffff; /* This applies to text/font icons, not SVG */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social .social-icons a img { /* Added rule for SVG images */
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social .social-icons a:hover {
+    color: #61dafb; /* For text/font icons */
+    transform: translateY(-5px);
+}
+
+.footer-social .social-icons a:hover img { /* For SVG images */
+    transform: translateY(-5px);
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #61dafb;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+/* Responsive Footer */
+@media screen and (max-width: 768px) {
+    .site-footer {
+        padding: 40px 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-logo {
+        margin: 0 auto;
+    }
+
+    .site-footer h3 {
+        text-align: center;
+    }
+
+    .site-footer h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-social .social-icons {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .site-footer {
+        padding: 30px 15px;
+    }
+
+    .site-footer h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-social .social-icons {
+        /* font-size: 1.5rem; This was for font icons, not SVG */
+    }
+    .footer-social .social-icons a img { /* Ensure SVG size is consistent on small screens */
+        width: 20px; /* Slightly smaller for very small screens */
+        height: 20px;
     }
 }

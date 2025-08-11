@@ -16,12 +16,20 @@
 
 /* 2 Resets */
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body{
   font-family:'Segoe UI',sans-serif;
   background:var(--ivory-pearl);
   color:var(--dark-olive);
-  padding-top:70px;           /* keep space for fixed navbar */
+  /* padding-top:70px; */           /* keep space for fixed navbar */
+  position: relative; /* Added for proper positioning context */
 }
+
 
 /* 3 Navigation bar */
 .navbar {
@@ -595,10 +603,115 @@ nav {
 }
 
 /* 9 Footer */
-footer{
-  background:var(--deep-maroon);
-  color:var(--ivory-pearl);
-  padding:1rem;text-align:center;font-size:.9rem;
+.site-footer {
+    background: var(--deep-maroon);
+    color: var(--ivory-pearl);
+    padding: 3rem 2rem;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.footer-logo img {
+    height: 100px; /* Adjust as needed */
+    width: auto;
+    display: block;
+}
+
+.footer-links,
+.footer-contact,
+.footer-social {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--champagne-gold);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
+    color: var(--ivory-pearl);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--champagne-gold);
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: var(--ivory-pearl);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a img {
+    width: 24px;
+    height: 24px;
+    /* filter: brightness(0) invert(1); */ /* Makes black SVG white */
+    transition: filter 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.social-icons a:hover img {
+    /* filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(30deg) brightness(1.5); */ /* Attempt to make it gold */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .footer-logo {
+        margin: 0 auto;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }
 
 /* 10 Animations (unchanged) */
