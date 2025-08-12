@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = loginForm.loginEmail.value;
-            const phone = loginForm.loginPhone.value; // Phone collected, but login primarily by email/password
             const password = loginForm.loginPassword.value;
             const errorMessageDiv = document.getElementById('loginError');
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessageDiv.textContent = '';
 
             // Basic client-side validation
-            if (!email || !password) { // Phone is optional for login with email/password
+            if (!email || !password) {
                 errorMessageDiv.textContent = 'Please enter both email and password.';
                 errorMessageDiv.style.display = 'block';
                 return;
