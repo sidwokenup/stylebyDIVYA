@@ -8,9 +8,45 @@ const supabaseClient = (typeof window !== 'undefined' && window.supabase)
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   : supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+// Function to update UI based on authentication status
+async function updateAuthUI() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    const loginLink = document.getElementById('loginLink');
+    const signupLink = document.getElementById('signupLink');
+    const profileSection = document.getElementById('profileSection');
+
+    if (user) {
+        // User is logged in
+        if (loginLink) loginLink.style.display = 'none';
+        if (signupLink) signupLink.style.display = 'none';
+        if (profileSection) profileSection.style.display = 'block';
+    } else {
+        // User is logged out
+        if (loginLink) loginLink.style.display = 'block';
+        if (signupLink) signupLink.style.display = 'block';
+        if (profileSection) profileSection.style.display = 'none';
+    }
+}
+
+// Function to handle user sign out
+async function handleSignOut() {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) {
+        console.error('Error signing out:', error.message);
+        alert('Error signing out: ' + error.message);
+    } else {
+        alert('You have been signed out.');
+        window.location.href = 'login.html'; // Redirect to login page after sign out
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Initial UI update on page load
+  updateAuthUI();
+
   const signupForm = document.getElementById('signupForm');
   const loginForm = document.getElementById('loginForm');
+  const signOutButton = document.getElementById('signOutButton');
 
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -42,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Login successful!');
           // Redirect to home or dashboard
           window.location.href = 'index.html';
+          updateAuthUI(); // Update UI after successful login
         } else {
           errorMessageDiv.textContent = 'An unexpected error occurred during login.';
           errorMessageDiv.style.display = 'block';
@@ -135,4 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  if (signOutButton) {
+    signOutButton.addEventListener('click', handleSignOut);
+  }
 });
+
+// Call updateAuthUI on page load to set initial state
+updateAuthUI();
