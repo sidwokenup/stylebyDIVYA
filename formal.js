@@ -4,20 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalItems = items.length;
     let currentIndex = 0;
 
-    // Add handler for external links
-    document.querySelectorAll('nav a[href^="https"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Ensure the link opens in a new tab
-            if (!link.hasAttribute('target')) {
-                link.setAttribute('target', '_blank');
-            }
-            // Add security attributes
-            if (!link.hasAttribute('rel')) {
-                link.setAttribute('rel', 'noopener noreferrer');
-            }
-        });
-    });
-
     // Define the background colors to sync with the carousel items
     // These hex codes are sampled from your video
     const backgroundColors = [
