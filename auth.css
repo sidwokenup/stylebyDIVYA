@@ -1,0 +1,170 @@
+
+/* auth.css */
+
+/* Import Google Fonts if needed, or rely on existing body font */
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Segoe+UI:wght@400;500;700&display=swap'); */
+
+:root {
+    /* Inherit or redefine colors from styles.css for clarity */
+    --vintage-rose:   #EAD7D1;
+    --ivory-pearl:    #FDF8F5;
+    --dusty-mauve:    #C7A7A3;
+    --olive-leaf:     #9CA48B;
+    --deep-maroon:    #672F38;
+    --champagne-gold: #D8C69C;
+    --dark-olive:     #4A4A4A;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--ivory-pearl);
+    color: var(--dark-olive);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box;
+}
+
+.auth-container {
+    background: var(--ivory-pearl);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--deep-maroon);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    background: #FFFFFF;
+    border: 1px solid var(--dusty-mauve);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    outline: none;
+    color: var(--dark-olive);
+}
+
+.form-group label {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    color: var(--dark-olive);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 1rem;
+    background: var(--ivory-pearl); /* To cover input border when label moves */
+    padding: 0 5px;
+}
+
+.form-group input:focus,
+.form-group input:valid {
+    border-color: var(--deep-maroon);
+    box-shadow: 0 0 0 2px rgba(103, 47, 56, 0.2); /* deep-maroon with opacity */
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label {
+    transform: translateY(-22px) translateX(-5px) scale(0.85);
+    font-size: 0.85rem;
+    color: var(--deep-maroon);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--deep-maroon);
+    color: var(--ivory-pearl);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(103, 47, 56, 0.2);
+    margin-top: 15px;
+}
+
+.auth-button:hover {
+    background: var(--champagne-gold);
+    color: var(--deep-maroon);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(103, 47, 56, 0.3);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(103, 47, 56, 0.15);
+}
+
+.switch-link {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: var(--dark-olive);
+}
+
+.switch-link a {
+    color: var(--deep-maroon);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.switch-link a:hover {
+    color: var(--champagne-gold);
+    text-decoration: underline;
+}
+
+.error-message {
+    color: var(--deep-maroon); /* Use a strong color for errors */
+    background-color: rgba(103, 47, 56, 0.1); /* Light background for error */
+    border: 1px solid var(--deep-maroon);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    display: none; /* Hidden by default */
+    text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .auth-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .auth-button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
