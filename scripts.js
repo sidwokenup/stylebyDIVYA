@@ -18,22 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(el);
     });
 
-    // --- Intersection Observer for Brand Story Section ---
-    const storyObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        threshold: 0.5 // Trigger when 50% of the element is visible
-    });
-
-    const storyContainer = document.querySelector('.story-container');
-    if (storyContainer) {
-        storyObserver.observe(storyContainer);
-    }
+    
 
 
     // --- Mobile menu functionality ---
