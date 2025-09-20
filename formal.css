@@ -748,3 +748,128 @@ h1 {
         height: 20px;
     }
 }
+
+/* Product Page Styles */
+.product-section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.product-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    display: none;
+}
+
+.slider-img.active {
+    display: block;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.slider-nav button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.image-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.thumbnail-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.thumbnail-img.active {
+    border-color: #61dafb;
+}
+
+.product-details h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.product-description .product-story {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.product-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.product-features li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.product-features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #61dafb;
+}
+
+.add-to-cart-btn {
+    background-color: #61dafb;
+    color: #121212;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}

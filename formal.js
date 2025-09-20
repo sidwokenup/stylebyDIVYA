@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     // Define the background colors to sync with the carousel items
-    // These hex codes are sampled from your video
     const backgroundColors = [
         '#2E2E2E', // Dark Grey
         '#9D7A75', // Brown
@@ -15,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function updateCarousel() {
-        // Set the background color of the main container
-        container.style.backgroundColor = backgroundColors[currentIndex];
+        if (container) {
+            // Set the background color of the main container
+            container.style.backgroundColor = backgroundColors[currentIndex];
+        }
 
         items.forEach((item, index) => {
             // Clear previous classes
@@ -43,14 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Set an interval to auto-play the carousel
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-    }, 3000); // Changes slide every 3 seconds (3000 milliseconds)
+    if (items.length > 0) {
+        // Set an interval to auto-play the carousel
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }, 3000); // Changes slide every 3 seconds (3000 milliseconds)
 
-    // Initialize the carousel on page load
-    updateCarousel();
+        // Initialize the carousel on page load
+        updateCarousel();
+    }
+
 
     // Intersection Observer for About section animations
     const revealItems = document.querySelectorAll('.reveal-item');
@@ -74,46 +78,72 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(item);
     });
 
-    // --- Carousel Navigation for Collection Section ---
-    const gallery = document.querySelector('.gallery');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const nextBtn =  document.querySelector('.carousel-arrow.next');
+    // Product page slider
+    const sliderImages = document.querySelector('.slider-images');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const thumbnailImgs = document.querySelectorAll('.thumbnail-img');
 
-    // Only initialize carousel if all elements are present
-    if (gallery && prevBtn && nextBtn) {
-        const firstCard = gallery.querySelector('.design-card'); // Changed to .design-card
+    if (sliderImages) {
+        const sliderImgs = document.querySelectorAll('.slider-img');
+        let sliderCurrentIndex = 0;
 
-        // Only setup carousel if there are cards to scroll
-        if (firstCard) {
-            const scrollGallery = (direction) => {
-                // Dynamically get card width and gap for robust scrolling
-                const galleryStyles = window.getComputedStyle(gallery);
-                const cardGap = parseFloat(galleryStyles.gap) || 0;
-                const cardWidth = firstCard.offsetWidth;
-                
-                const scrollAmount = direction === 'next' ? cardWidth + cardGap : -(cardWidth + cardGap);
-                gallery.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            };
-
-            prevBtn.addEventListener('click', () => scrollGallery('prev'));
-            nextBtn.addEventListener('click', () => scrollGallery('next'));
-
-            // Hide/show arrows at scroll limits and update cursor
-            const updateArrowVisibility = () => {
-                // Use a small buffer for floating point inaccuracies
-                const scrollEnd = gallery.scrollWidth - gallery.clientWidth;
-                prevBtn.style.opacity = gallery.scrollLeft < 1 ? '0.5' : '1';
-                prevBtn.style.cursor = gallery.scrollLeft < 1 ? 'default' : 'pointer';
-                nextBtn.style.opacity = gallery.scrollLeft >= scrollEnd - 1 ? '0.5' : '1';
-                nextBtn.style.cursor = gallery.scrollLeft >= scrollEnd - 1 ? 'default' : 'pointer';
-            };
-
-            gallery.addEventListener('scroll', updateArrowVisibility);
-            window.addEventListener('resize', updateArrowVisibility);
-            updateArrowVisibility(); // Initial check on load
+        function updateSlider() {
+            sliderImgs.forEach((img, index) => {
+                img.classList.remove('active');
+                if (index === sliderCurrentIndex) {
+                    img.classList.add('active');
+                }
+            });
+            thumbnailImgs.forEach((img, index) => {
+                img.classList.remove('active');
+                if (index === sliderCurrentIndex) {
+                    img.classList.add('active');
+                }
+            });
         }
+
+        nextBtn.addEventListener('click', () => {
+            sliderCurrentIndex = (sliderCurrentIndex + 1) % sliderImgs.length;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            sliderCurrentIndex = (sliderCurrentIndex - 1 + sliderImgs.length) % sliderImgs.length;
+            updateSlider();
+        });
+
+        thumbnailImgs.forEach(img => {
+            img.addEventListener('click', () => {
+                sliderCurrentIndex = parseInt(img.dataset.index);
+                updateSlider();
+            });
+        });
+
+        updateSlider();
+    }
+
+    // Collection gallery slider
+    const gallery = document.querySelector('.gallery');
+    const prev = document.querySelector('.carousel-arrow.prev');
+    const next = document.querySelector('.carousel-arrow.next');
+
+    if (gallery && prev && next) {
+        const cardWidth = document.querySelector('.design-card').offsetWidth;
+        const scrollAmount = cardWidth * 2; // Scroll by two cards
+
+        next.addEventListener('click', () => {
+            gallery.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        prev.addEventListener('click', () => {
+            gallery.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
     }
 });
