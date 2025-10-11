@@ -35,14 +35,27 @@
 <body>
     <section id="formal">
         <div id="carousel-container">
-            <div class="logo">
-                <img src="model/logo.png" alt="StyleByDivya Logo">
-            </div>
-            <header>
+            <header class="navbar">
+                <div class="logo">
+                    <img src="model/logo.png" alt="StyleByDivya Logo">
+                </div>
                 <nav>
-                    <a href="index.html">Vintage</a>
-                    <a href="#collection">Collection</a>
-                    <a href="#about">About</a>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Vintage</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="login.html" id="loginLink">Login</a></li>
+                        <li><a href="signup.html" id="signupLink">Sign Up</a></li>
+                        <li id="profileSection" style="display: none;">
+                            <a href="#" id="profileIcon">Profile</a>
+                            <button id="signOutButton" style="background: none; border: none; color: white; cursor: pointer; font: inherit; padding: 0;">Sign Out</button>
+                        </li>
+                    </ul>
                 </nav>
             </header>
 
@@ -119,7 +132,7 @@
                     </div>
 
                     <div class="design-card">
-                        <a href="vintage-charm.html" class="design-image">
+                        <a href="formalwear/vintage-charm.html" class="design-image">
                             <img src="model/MD-1.jpg" alt="Vintage Charm">
                             <div class="design-overlay">
                                 <h3>Vintage Charm</h3>
@@ -204,6 +217,8 @@
             <p>&copy; 2025 StyleByDIVYA. All rights reserved.</p>
         </div>
     </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="auth.js"></script>
         <script src="formal.js"></script>
     </section>
 </body>

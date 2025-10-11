@@ -6,8 +6,8 @@ body {
     background-color: #121212;
     color: #fff;
     min-height: 100vh;
-    overflow-x: hidden;  /* Prevent horizontal scroll */
-    overflow-y: auto;   /* Enable vertical scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
     width: 100%;
 }
 
@@ -16,67 +16,153 @@ body {
     max-width: 100%;
     min-height: 100vh;
     margin: 0;
-    padding: 40px 0;    /* Remove horizontal padding */
+    padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     transition: background-color 1s ease-in-out;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
     position: relative;
 }
 
-header {
+.navbar {
     display: flex;
-    justify-content: flex-end;  /* Changed to align nav to right */
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin-bottom: 40px;
-    position: relative;  /* Added for absolute positioning context */
-}
-
-.logo {
-    position: absolute;  /* Changed from absolute to fixed */
-    left: 40px;
-    top: -20px;
-    z-index: 1000;    /* Increased z-index to ensure it stays on top */
-    width: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(17, 13, 13, 0.525);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10000; /* Keep navbar always above */
 }
 
 .logo img {
-    height: 200px;    /* Reduced from 300px for better proportions */
+    height: 80px;
     width: auto;
-    display: block;
-    transition: all 0.3s ease;  /* Smooth transition for any changes */
 }
 
-nav {
-    margin-left: auto;  /* Push nav to right */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 15px 30px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    margin-right: 40px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
+.nav-links a {
     color: #fff;
     text-decoration: none;
-    margin-left: 35px;
-    font-size: 1.2rem;
-    opacity: 0.9;
-    transition: opacity 0.3s, transform 0.3s, color 0.3s;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
 }
 
-nav a:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-    color: #2c2c2c; /* Charcoal color on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffd700;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ FIXED MOBILE VIEW DROPDOWN */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        position: fixed; /* Changed from absolute */
+        top: 80px; /* Below navbar */
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 1rem 0;
+        z-index: 99999; /* Higher than any other element */
+        transform: translateY(-150%);
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        opacity: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        animation: slide-down 0.3s ease-in-out;
+    }
+
+    .nav-links a {
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-links a:hover {
+        background-color: #ffd700;
+        color: #121212;
+    }
+
+    .nav-links li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 100000; /* Keep it clickable */
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100001;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 main {
@@ -87,8 +173,8 @@ main {
     align-items: center;
     position: relative;
     width: 100%;
-    padding: 0;
-    margin-bottom: 40px;  /* Add bottom margin for spacing */
+    padding: 40px 0;
+    margin-bottom: 40px;
 }
 
 h1 {
@@ -107,13 +193,13 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    overflow: hidden;   /* Prevent carousel overflow */
+    overflow: hidden;
 }
 
 .carousel-item {
     position: absolute;
-    width: 280px;       /* Reduced from 400px */
-    height: 350px;      /* Reduced from 400px;      /* Reduced from 550px */
+    width: 280px;
+    height: 350px;
     border-radius: 10px;
     overflow: hidden;
     background-color: #ffffff00;
@@ -129,158 +215,32 @@ h1 {
     object-position: top center;
 }
 
-/* Positioning for the 5 items */
 .carousel-item.active {
-    transform: translateX(0) scale(1.1);  /* Reduced scale from 1.2 */
+    transform: translateX(0) scale(1.1);
     filter: brightness(1) blur(0);
     z-index: 5;
 }
 
 .carousel-item.prev-1 {
-    transform: translateX(-300px) scale(0.9);  /* Adjusted position */
+    transform: translateX(-300px) scale(0.9);
     z-index: 4;
 }
 
 .carousel-item.next-1 {
-    transform: translateX(300px) scale(0.9);   /* Adjusted position */
+    transform: translateX(300px) scale(0.9);
     z-index: 4;
 }
 
 .carousel-item.prev-2 {
-    transform: translateX(-580px) scale(0.7);  /* Adjusted position */
+    transform: translateX(-580px) scale(0.7);
     z-index: 3;
 }
 
 .carousel-item.next-2 {
-    transform: translateX(580px) scale(0.7);   /* Adjusted position */
+    transform: translateX(580px) scale(0.7);
     z-index: 3;
 }
 
-/* Mobile Responsive Design */
-@media screen and (max-width: 768px) {
-    #carousel-container {
-        padding: 20px 0;  /* Remove horizontal padding */
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    header {
-        justify-content: center;
-        padding-top: 120px; /* Make room for logo */
-        padding-left: 20px;  
-    }
-
-    .logo {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 20px;
-    }
-
-    .logo img {
-        height: 150px; /* Increased from 60px */
-    }
-
-    nav {
-        margin-left: 0;
-        width: 90%;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    nav a {
-        margin-left: 0;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-        padding: 0 10px;
-        margin-bottom: 30px;
-    }
-
-    .carousel {
-        overflow: hidden;
-        width: 100%;
-    }
-
-    .carousel-item {
-        width: 180px;   /* Increased from 150px */
-        height: 270px;  /* Increased from 225px */
-    }
-
-    /* Adjust positioning for carousel items on mobile */
-    .carousel-item.active {
-        transform: translateX(0) scale(1.15);  /* Increased scale */
-    }
-
-    .carousel-item.prev-1 {
-        transform: translateX(-180px) scale(0.95);  /* Adjusted position and scale */
-    }
-
-    .carousel-item.next-1 {
-        transform: translateX(180px) scale(0.95);   /* Adjusted position and scale */
-    }
-
-    .carousel-item.prev-2 {
-        transform: translateX(-340px) scale(0.75);  /* Adjusted position and scale */
-    }
-
-    .carousel-item.next-2 {
-        transform: translateX(340px) scale(0.75);   /* Adjusted position and scale */
-    }
-
-    .logo img {
-        height: 200px; /* Slightly smaller logo on mobile */
-    }
-}
-
-/* Small mobile devices */
-@media screen and (max-width: 480px) {
-    body {
-        overflow-x: hidden;
-    }
-
-    #carousel-container {
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    .carousel {
-        height: 450px;  /* Increased height to accommodate larger cards */
-    }
-
-    .carousel-item {
-        width: 160px;   /* Increased from 140px */
-        height: 250px;  /* Increased from 210px */
-    }
-
-    /* Adjust positioning for carousel items on mobile */
-    .carousel-item.active {
-        transform: translateX(0) scale(1.1);  /* Slightly reduced scale for better fit */
-    }
-
-    .carousel-item.prev-1 {
-        transform: translateX(-170px) scale(0.9);  /* Adjusted position for new size */
-    }
-
-    .carousel-item.next-1 {
-        transform: translateX(170px) scale(0.9);   /* Adjusted position for new size */
-    }
-
-    .carousel-item.prev-2 {
-        transform: translateX(-320px) scale(0.7);  /* Adjusted position for new size */
-    }
-
-    .carousel-item.next-2 {
-        transform: translateX(320px) scale(0.7);   /* Adjusted position for new size */
-    }
-
-    .logo img {
-        height: 120px; /* Increased from 60px */
-    }
-}
-
-/* New Section Styles */
 .section {
     padding: 80px 40px;
     max-width: 1200px;
@@ -307,15 +267,14 @@ h1 {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: #61dafb; /* A subtle accent color */
+    background-color: #61dafb;
     border-radius: 2px;
 }
 
-/* Collection Section */
 #collection {
     background-color: #1a1a1a;
-    padding-top: 80px; /* Added for vertical spacing */
-    padding-bottom: 80px; /* Added for vertical spacing */
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .carousel-container {
@@ -333,15 +292,15 @@ h1 {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 
 .gallery::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none;
 }
 
 .design-card {
-    flex: 0 0 300px; /* Fixed card width */
+    flex: 0 0 300px;
     scroll-snap-align: start;
     position: relative;
     border-radius: 12px;
@@ -361,7 +320,7 @@ h1 {
     position: relative;
     overflow: hidden;
     aspect-ratio: 3/4;
-    text-decoration: none; /* Remove underline from link */
+    text-decoration: none;
 }
 
 .design-image img {
@@ -375,7 +334,6 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Option 1: Always visible title */
 .design-title {
     padding: 1rem;
     margin: 0;
@@ -384,11 +342,10 @@ h1 {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Option 2: Hover overlay effect */
 .design-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(97, 218, 251, 0.85); /* Using accent color with opacity */
+    background: rgba(97, 218, 251, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -412,7 +369,6 @@ h1 {
     transform: translateY(0);
 }
 
-/* New styles for link inside design-card */
 .design-card a {
     position: relative;
     z-index: 2;
@@ -423,7 +379,6 @@ h1 {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Carousel Navigation */
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -464,7 +419,6 @@ h1 {
     right: 0;
 }
 
-/* About Section */
 #about {
     background-color: #121212;
 }
@@ -495,7 +449,6 @@ h1 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Animations for About Section */
 .reveal-item {
     opacity: 0;
     transform: translateY(40px);
@@ -507,7 +460,6 @@ h1 {
     transform: translateY(0);
 }
 
-/* Responsive adjustments for new sections */
 @media screen and (max-width: 768px) {
     .section {
         padding: 60px 20px;
@@ -531,18 +483,6 @@ h1 {
         scroll-snap-align: center;
     }
 
-    .design-card img {
-        /* Removed fixed height to rely on aspect-ratio and object-fit */
-    }
-
-    .design-card h3 {
-        font-size: 1.3rem;
-    }
-
-    .design-card p {
-        font-size: 0.95rem;
-    }
-
     .about-content {
         flex-direction: column;
         gap: 40px;
@@ -553,11 +493,11 @@ h1 {
     }
 
     .carousel-arrow.prev {
-        left: 0.5rem; /* Adjusted for mobile */
+        left: 0.5rem;
     }
 
     .carousel-arrow.next {
-        right: 0.5rem; /* Adjusted for mobile */
+        right: 0.5rem;
     }
 }
 
@@ -571,18 +511,6 @@ h1 {
         margin-bottom: 30px;
     }
 
-    .design-card img {
-        /* Removed fixed height to rely on aspect-ratio and object-fit */
-    }
-
-    .design-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .design-card p {
-        font-size: 0.9rem;
-    }
-
     .about-content {
         gap: 30px;
     }
@@ -592,10 +520,9 @@ h1 {
     }
 }
 
-/* Footer Styles */
 .site-footer {
-    background-color: #0d0d0d; /* Slightly darker background for distinction */
-    color: #e0e0e0; /* Light text color */
+    background-color: #0d0d0d;
+    color: #e0e0e0;
     padding: 60px 40px;
     font-size: 0.95rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -611,7 +538,7 @@ h1 {
 }
 
 .footer-logo img {
-    height: 100px; /* Adjust as needed */
+    height: 100px;
     width: auto;
     display: block;
 }
@@ -620,13 +547,13 @@ h1 {
 .footer-contact,
 .footer-links {
     flex: 1;
-    min-width: 250px; /* Ensure columns don't get too narrow */
+    min-width: 250px;
 }
 
 .site-footer h3 {
     font-size: 1.4rem;
     margin-bottom: 20px;
-    color: #61dafb; /* Accent color for headings */
+    color: #61dafb;
     position: relative;
     padding-bottom: 10px;
 }
@@ -649,22 +576,22 @@ h1 {
 }
 
 .footer-social .social-icons a {
-    color: #ffffff; /* This applies to text/font icons, not SVG */
+    color: #ffffff;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-social .social-icons a img { /* Added rule for SVG images */
+.footer-social .social-icons a img {
     width: 24px;
     height: 24px;
     transition: transform 0.3s ease;
 }
 
 .footer-social .social-icons a:hover {
-    color: #61dafb; /* For text/font icons */
+    color: #61dafb;
     transform: translateY(-5px);
 }
 
-.footer-social .social-icons a:hover img { /* For SVG images */
+.footer-social .social-icons a:hover img {
     transform: translateY(-5px);
 }
 
@@ -701,7 +628,6 @@ h1 {
     font-size: 0.85rem;
 }
 
-/* Responsive Footer */
 @media screen and (max-width: 768px) {
     .site-footer {
         padding: 40px 20px;
@@ -740,16 +666,12 @@ h1 {
         font-size: 1.2rem;
     }
 
-    .footer-social .social-icons {
-        /* font-size: 1.5rem; This was for font icons, not SVG */
-    }
-    .footer-social .social-icons a img { /* Ensure SVG size is consistent on small screens */
-        width: 20px; /* Slightly smaller for very small screens */
+    .footer-social .social-icons a img {
+        width: 20px;
         height: 20px;
     }
 }
 
-/* Product Page Styles */
 .product-section {
     padding: 80px 40px;
     max-width: 1200px;

@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
     const items = document.querySelectorAll('.carousel-item');
     const container = document.getElementById('carousel-container');
     const totalItems = items.length;
@@ -133,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollAmount = cardWidth * 2; // Scroll by two cards
 
         next.addEventListener('click', () => {
-            gallery.scrollBy({
+            gallery.scrollBy({ 
                 left: scrollAmount,
                 behavior: 'smooth'
             });
