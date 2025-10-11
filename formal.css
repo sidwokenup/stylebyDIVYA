@@ -793,5 +793,21 @@ h1 {
 @media screen and (max-width: 768px) {
     .product-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .product-details h1 {
+        font-size: 2rem;
+    }
+
+    .thumbnail-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
     }
 }
