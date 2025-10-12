@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Style By Divya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="formal.css">
+    <style>
+        /* This is a placeholder for your main CSS. 
+        In a real project, you would link to your external CSS file:
+        <link rel="stylesheet" href="style.css"> 
+        
+        For this single-file solution, I'll include the necessary CSS 
+        within the <style> tags below.
+        */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        /* === Base Styles from your CSS === */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            min-height: 100vh;
+            overflow-y: auto;
+            max-width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Nav and Footer (Simplified for Policy Page) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(17, 13, 13, 0.525);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10000;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .logo img {
+            height: 50px; /* Reduced height for clean look */
+            width: auto;
+        }
+
+        .site-footer {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            padding: 30px 0px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+
+        /* === Privacy Policy Specific Styles === */
+        .policy-container {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 40px;
+            flex-grow: 1; /* Allows the content to fill space */
+        }
+
+        .policy-container h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #61dafb; /* Accent color for main title */
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .policy-container h1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffd700; /* Gold accent */
+            border-radius: 2px;
+        }
+
+        .policy-container .last-updated {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+        }
+
+        .policy-container h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(97, 218, 251, 0.3); /* Lighter accent line */
+            padding-bottom: 5px;
+        }
+
+        .policy-container h3 {
+            font-size: 1.2rem;
+            color: #61dafb;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .policy-container p,
+        .policy-container ul {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .policy-container ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+
+        .policy-container li {
+            margin-bottom: 10px;
+        }
+
+        .policy-container strong {
+            color: #ffd700; /* Use gold for emphasizing keywords */
+            font-weight: 600;
+        }
+        
+        .policy-container a {
+            color: #61dafb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .policy-container a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            padding: 20px;
+            border: 1px solid #61dafb40;
+            border-left: 5px solid #61dafb;
+            margin-top: 30px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+
+        /* === Responsive Adjustments for Policy Content === */
+        @media (max-width: 768px) {
+            .policy-container {
+                margin: 60px auto;
+                padding: 0 20px;
+            }
+
+            .policy-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-container h2 {
+                font-size: 1.5rem;
+            }
+            
+            .navbar {
+                padding: 1rem 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+             .policy-container h1 {
+                font-size: 2rem;
+            }
+            .policy-container h2 {
+                font-size: 1.3rem;
+            }
+            .policy-container p,
+            .policy-container ul {
+                font-size: 0.95rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section id="formal">
+        <div id="carousel-container">
+            <header class="navbar">
+                <div class="logo">
+                    <img src="model/logo.png" alt="StyleByDivya Logo">
+                </div>
+                <nav>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Vintage</a></li>
+                        <li><a href="formal.html#collection">Collection</a></li>
+                        <li><a href="formal.html#about">About</a></li>
+                        <li><a href="login.html" id="loginLink">Login</a></li>
+                        <li><a href="signup.html" id="signupLink">Sign Up</a></li>
+                        <li id="profileSection" style="display: none;">
+                            <a href="#" id="profileIcon">Profile</a>
+                            <button id="signOutButton" style="background: none; border: none; color: white; cursor: pointer; font: inherit; padding: 0;">Sign Out</button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+    <div class="policy-container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: October 12, 2025</p>
+
+        <p>Style By Divya ("we," "our," or "us") is committed to protecting the privacy of our customers. This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from our website (the "Site") or interact with us in our physical stores.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>We collect various types of information to provide and improve our services to you. This includes data collected both online (via the Site) and offline (in our retail locations).</p>
+
+        <h3>A. Personal Information You Provide</h3>
+        <ul>
+            <li><strong>Order Information:</strong> When you make a purchase, we collect your name, billing address, shipping address, payment information (including credit card numbers or other payment details), email address, and phone number.</li>
+            <li><strong>Account Information:</strong> If you create an account, we collect your name, email, password, and clothing size preferences.</li>
+            <li><strong>In-Store Data:</strong> When you purchase or use services in our offline stores, we may collect your contact details for receipts, loyalty programs, or tailoring services.</li>
+            <li><strong>Communication Data:</strong> Information you provide when contacting us via email, phone, social media, or through customer support.</li>
+        </ul>
+
+        <h3>B. Automatically Collected Information (Online)</h3>
+        <ul>
+            <li><strong>Usage Data:</strong> Information about how you access and use the Site, such as your IP address, browser type, pages viewed, and the duration of your visit.</li>
+            <li><strong>Cookies and Tracking:</strong> We use cookies, web beacons, and similar tracking technologies to track activity on our Site and hold certain information.</li>
+        </ul>
+        
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the collected information for the following primary purposes:</p>
+        <ul>
+            <li>To **fulfill and manage your orders**, including processing payments, arranging shipping, and providing invoices.</li>
+            <li>To communicate with you about your order, products, services, and promotional offers.</li>
+            <li>To manage your online account and maintain your loyalty program benefits (if applicable).</li>
+            <li>To personalize your experience, suggesting formal wear and styles relevant to your preferences.</li>
+            <li>To improve and optimize our Site and our retail offerings (e.g., by analyzing customer browsing and shopping behavior).</li>
+            <li>To comply with our legal obligations, resolve disputes, and enforce our agreements.</li>
+        </ul>
+        
+        <h2>3. Sharing Your Personal Information</h2>
+        <p>We may share your personal information with third parties to help us use your Personal Information, as described above. We **do not sell your personal data** to third parties.</p>
+        <ul>
+            <li><strong>Service Providers:</strong> We share information with third-party vendors, such as payment processors, shipping carriers, and logistics partners, to fulfill your orders.</li>
+            <li><strong>Marketing and Analytics:</strong> We use services like Google Analytics to understand how our customers use the Site. This data is anonymized where possible.</li>
+            <li><strong>Legal Compliance:</strong> We may share your information if required to do so by law or in response to valid requests by public authorities (e.g., a court order or government agency).</li>
+        </ul>
+        
+        <h2>4. Your Rights</h2>
+        <p>Depending on your location, you may have certain rights regarding your personal data. You have the right to:</p>
+        <ul>
+            <li>Access the personal information we hold about you.</li>
+            <li>Request that your personal information be corrected, updated, or deleted.</li>
+            <li>Object to the processing of your personal data.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us using the information provided below.</p>
+        
+        <h2>5. Data Retention</h2>
+        <p>When you place an order through the Site or in-store, we will maintain your Order Information for our records unless and until you ask us to delete this information.</p>
+
+        <h2>6. Changes to the Policy</h2>
+        <p>We may update this privacy policy from time to time in order to reflect changes to our practices or for other operational, legal, or regulatory reasons. We encourage you to review this policy periodically.</p>
+        
+        <h2>7. Contact Us</h2>
+        <p>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail or by mail at the following address:</p>
+        
+        <div class="contact-info">
+            <h3>Style By Divya</h3>
+            <p><strong>Email:</strong> <a href="mailto:privacy@stylebydivya.com">privacy@stylebydivya.com</a></p>
+            <p><strong>Phone:</strong> +91 98765 43210 (Customer Support)</p>
+            <p><strong>Mailing Address:</strong> [Your Business Address for Style By Divya]</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../model/logo.png" alt="StyleByDIVYA Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@stylebydivya.in</p>
+                <p>Phone:+91 9813484649</p>
+                <p>Address: Mini secretariat jhajjar Haryana-124103</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/+91 98134 84649" aria-label="WhatsApp"><img src="../designs/whatsapp.svg" alt="WhatsApp"></a>
+                    <a href="https://www.instagram.com/_stylebydivya?igsh=MTliYmp5ODgyMjk3eg==" aria-label="Instagram"><img src="../designs/instagram.svg" alt="Instagram"></a>
+                    <a href="www.linkedin.com/in/divya-parashar28" aria-label="LinkedIn"><img src="../designs/linkedin.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StyleByDIVYA. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to automatically update the copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="formal.js"></script>
+
+</body>
+</html>

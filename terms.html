@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Style By Divya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="formal.css">
+    <style>
+        /* === Base Styles from your CSS === */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            min-height: 100vh;
+            overflow-y: auto;
+            max-width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Nav and Footer (Simplified for Policy Page) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(17, 13, 13, 0.525);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10000;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .site-footer {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            padding: 30px 0px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === Terms & Conditions Specific Styles === */
+        .policy-container {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 40px;
+            flex-grow: 1;
+        }
+
+        .policy-container h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #61dafb; /* Accent color for main title */
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .policy-container h1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffd700; /* Gold accent */
+            border-radius: 2px;
+        }
+
+        .policy-container .last-updated {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+        }
+
+        .policy-container h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(97, 218, 251, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .policy-container h3 {
+            font-size: 1.2rem;
+            color: #61dafb;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .policy-container p,
+        .policy-container ul {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .policy-container ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+        
+        .policy-container ol {
+            padding-left: 25px;
+            list-style: decimal;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .policy-container li {
+            margin-bottom: 10px;
+        }
+
+        .policy-container strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .policy-container a {
+            color: #61dafb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .policy-container a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            padding: 20px;
+            border: 1px solid #61dafb40;
+            border-left: 5px solid #61dafb;
+            margin-top: 30px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+
+        /* === Responsive Adjustments === */
+        @media (max-width: 768px) {
+            .policy-container {
+                margin: 60px auto;
+                padding: 0 20px;
+            }
+
+            .policy-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-container h2 {
+                font-size: 1.5rem;
+            }
+            
+            .navbar {
+                padding: 1rem 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+             .policy-container h1 {
+                font-size: 2rem;
+            }
+            .policy-container h2 {
+                font-size: 1.3rem;
+            }
+            .policy-container p,
+            .policy-container ul,
+            .policy-container ol {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+     <section id="formal">
+        <div id="carousel-container">
+            <header class="navbar">
+                <div class="logo">
+                    <img src="model/logo.png" alt="StyleByDivya Logo">
+                </div>
+                <nav>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Vintage</a></li>
+                        <li><a href="formal.html#collection">Collection</a></li>
+                        <li><a href="formal.html#about">About</a></li>
+                        <li><a href="login.html" id="loginLink">Login</a></li>
+                        <li><a href="signup.html" id="signupLink">Sign Up</a></li>
+                        <li id="profileSection" style="display: none;">
+                            <a href="#" id="profileIcon">Profile</a>
+                            <button id="signOutButton" style="background: none; border: none; color: white; cursor: pointer; font: inherit; padding: 0;">Sign Out</button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+
+    <div class="policy-container">
+        <h1>Terms and Conditions</h1>
+        <p class="last-updated">Last Updated: October 12, 2025</p>
+
+        <p>Welcome to **Style By Divya**. By accessing and using our website (the "Site") or purchasing formal women's clothing from our online store or physical retail locations, you agree to be bound by the following terms and conditions ("Terms of Service", "Terms").</p>
+
+        <!-- --- -->
+
+        <h2>1. General Conditions and Acceptance</h2>
+        <p>We reserve the right to refuse service to anyone for any reason at any time. You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.</p>
+
+        <!-- --- -->
+
+        <h2>2. Online Store Terms</h2>
+        <ol>
+            <li>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.</li>
+            <li>You may not use our products for any illegal or unauthorized purpose.</li>
+            <li>A breach or violation of any of the Terms will result in an immediate termination of your Services.</li>
+            <li>We reserve the right, but are not obligated, to limit the sales of our products or Services to any person, geographic region, or jurisdiction.</li>
+        </ol>
+
+        <!-- --- -->
+
+        <h2>3. Products and Services</h2>
+        <p>All descriptions of products or product pricing are subject to change at any time without notice, at the sole discretion of us. We have made every effort to display as accurately as possible the colors and images of our formal clothing that appear at the store. We cannot guarantee that your computer monitor's display of any color will be accurate.</p>
+        
+        <h3>Returns and Exchanges</h3>
+        <p>Our Return and Exchange Policy is outlined separately. Please review this policy prior to making a purchase. Generally, returns of unworn, unused formal garments are accepted within [30] days of purchase, provided they meet the criteria specified in the return policy.</p>
+
+        <!-- --- -->
+
+        <h2>4. Accuracy of Billing and Account Information</h2>
+        <p>We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities purchased per person, per household or per order. You agree to provide current, complete and accurate purchase and account information for all purchases made at our store (online or offline).</p>
+
+        <!-- --- -->
+
+        <h2>5. Modifications to the Service and Prices</h2>
+        <p>Prices for our formal wear are subject to change without notice. We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time. We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.</p>
+        
+        <!-- --- -->
+
+        <h2>6. Third-Party Links</h2>
+        <p>Certain content, products and services available via our Service may include materials from third-parties. Third-party links on this site may direct you to third-party websites that are not affiliated with us. We are not responsible for examining or evaluating the content or accuracy and we do not warrant and will not have any liability or responsibility for any third-party materials or websites.</p>
+
+        <!-- --- -->
+
+        <h2>7. User Comments, Feedback and Other Submissions</h2>
+        <p>If, at our request, you send certain specific submissions (for example contest entries) or without a request from us you send creative ideas, suggestions, proposals, plans, or other materials, whether online, by email, by postal mail, or otherwise (collectively, 'comments'), you agree that we may, at any time, without restriction, edit, copy, publish, distribute, translate and otherwise use in any medium any comments that you forward to us.</p>
+        
+        <!-- --- -->
+
+        <h2>8. Disclaimer of Warranties; Limitation of Liability</h2>
+        <p>We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free. We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable.</p>
+        <p>In no case shall **Style By Divya**, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind.</p>
+        
+        <!-- --- -->
+
+        <h2>9. Governing Law</h2>
+        <p>These Terms of Service and any separate agreements whereby we provide you Services shall be governed by and construed in accordance with the laws of [Your Jurisdiction, e.g., India].</p>
+        
+        <!-- --- -->
+
+        <h2>10. Contact Information</h2>
+        <p>Questions about the Terms of Service should be sent to us at:</p>
+        
+        <div class="contact-info">
+            <h3>Style By Divya Legal Department</h3>
+            <p><strong>Email:</strong> <a href="mailto:legal@stylebydivya.com">legal@stylebydivya.com</a></p>
+            <p><strong>Phone:</strong> +91 98765 43210 (Legal Inquiries)</p>
+            <p><strong>Mailing Address:</strong> [Your Business Address for Style By Divya]</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="model/logo.png" alt="StyleByDIVYA Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@stylebydivya.in</p>
+                <p>Phone:+91 9813484649</p>
+                <p>Address: Mini secretariat jhajjar Haryana-124103</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/+91 98134 84649" aria-label="WhatsApp"><img src="../designs/whatsapp.svg" alt="WhatsApp"></a>
+                    <a href="https://www.instagram.com/_stylebydivya?igsh=MTliYmp5ODgyMjk3eg==" aria-label="Instagram"><img src="../designs/instagram.svg" alt="Instagram"></a>
+                    <a href="www.linkedin.com/in/divya-parashar28" aria-label="LinkedIn"><img src="../designs/linkedin.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StyleByDIVYA. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to automatically update the copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="formal.js"></script>
+
+</body>
+</html>
