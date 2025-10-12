@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WWZP795L0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3WWZP795L0');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleByDIVYA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="designs/Log.png" type="image/png" />
+
+    <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:title" content="Style By DIVYA" />
+    <meta property="og:description" content="Discover your style with Divya’s fashion picks!" />
+    <meta property="og:image" content="https://www.stylebydivya.in/designs/preview.png" />
+    <meta property="og:url" content="https://www.stylebydivya.in/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card (also supports WhatsApp preview fallback) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Style By DIVYA" />
+    <meta name="twitter:description" content="Discover your style with Divya’s fashion picks!" />
+    <meta name="twitter:image" content="https://www.stylebydivya.in/designs/preview.png" />
+</head>
+
+
+<body>
+    <header class="navbar">
+        <nav>
+            <div class="logo">StyleByDIVYA</div>
+            <!-- Move hamburger inside nav -->
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Formal</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#story">Brand Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li id="loginLink"><a href="login.html">Login</a></li>
+                <li id="signupLink"><a href="signup.html">Sign Up</a></li>
+                <li id="profileSection" style="display: none;">
+                    <a href="#" id="profileIcon">Profile</a>
+                    <button id="signOutButton" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit; padding: 0;">Sign Out</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="background-slider">
+            <div class="bg-image bg1"></div>
+            <div class="bg-image bg2"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to StyleByDIVYA</h1>
+                <p>Where Aesthetic Meets Elegance</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="collection-section">
+        <h2>Our Collection</h2>
+        <div class="carousel-container">
+            <button class="carousel-arrow prev" aria-label="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+            </button>
+
+            <div class="gallery">
+                <!-- Update each design card link -->
+                <div class="design-card">
+                    <a href="ViraasatVarnika.html" class="design-image">
+                        <img src="designs/D6.jpg" alt="Viraasat Varnika">
+                        <div class="design-overlay">
+                            <h3>Viraasat Varnika</h3>
+                        </div>
+                    </a>
+                    <h3 class="design-title">Viraasat Varnika</h3>
+                </div>
+
+                <div class="design-card">
+                    <a href="PhoolSaaz.html" class="design-image">
+                        <img src="designs/D-9.jpg" alt="PhoolSaaz">
+                        <div class="design-overlay">
+                            <h3>PhoolSaaz</h3>
+                        </div>
+                    </a>
+                    <h3 class="design-title">PhoolSaaz</h3>
+                </div>
+
+                <div class="design-card">
+                    <a href="vintageproduct/ReviveGrace.html" class="design-image">
+                        <img src="designs/D-8.jpg" alt="Revive Grace">
+                        <div class="design-overlay">
+                            <h3>Revive Grace</h3>
+                        </div>
+                    </a>
+                    <h3 class="design-title">Revive Grace</h3>
+                </div>
+
+                <div class="design-card">
+                    <a href="NooreRuhani.html" class="design-image">
+                        <img src="designs/D-10.jpg" alt="Noor-e-Ruhani">
+                        <div class="design-overlay">
+                            <h3>Noor-e-Ruhani</h3>
+                        </div>
+                    </a>
+                    <h3 class="design-title">Noor-e-Ruhani</h3>
+                </div>
+
+                <div class="design-card">
+                    <a href="Aabha.html" class="design-image">
+                        <img src="designs/D-11.jpg" alt="Aabha">
+                        <div class="design-overlay">
+                            <h3>Aabha</h3>
+                        </div>
+                    </a>
+                    <h3 class="design-title">Aabha</h3>
+                </div>
+                <!-- Add more design-cards as needed -->
+            </div>
+
+            <button class="carousel-arrow next" aria-label="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <section id="story" class="story-section">
+        <div class="story-container">
+            <div class="story-image">
+                <img src="designs/IM.png" alt="Brand Story Image">
+            </div>
+            <div class="story-content">
+                <h2 class="story-heading">Brand Story</h2>
+                <p class="story-intro">
+                    Some sarees are not just fabric. They are memories.
+                    A soft pallu that once hugged your mother's shoulder…
+                    A border your dadi stitched with her dreams…
+                </p>
+                <p class="story-main">
+                    At StyleByDIVYA, we don't believe in discarding those stories.
+                    We believe in reviving them — with style.
+                </p>
+                <p class="story-details">
+                    Founded by Divya, a dreamer with a love for emotions, ethnic wear, and elegance —
+                    StyleByDIVYA is a slow fashion brand built on the idea that every old saree deserves a second life.
+                </p>
+                <div class="story-highlights">
+                    <p>We don't just design clothes.</p>
+                    <p>We listen to stories.</p>
+                    <p>We work with local artisans.</p>
+                    <p>We celebrate your heritage.</p>
+                </div>
+                <p class="story-tagline">
+                    Old Sarees, New Stories.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Get in Touch</h2>
+            <p class="contact-intro">Have a story to share? Let's talk about giving your cherished sarees new life.</p>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" id="name" required>
+                    <label for="name">Your Name</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="phone" id="phone" required>
+                    <label for="phone">Your Phone Number</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email Address</label>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" id="message" rows="5" required></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="model/logo.png" alt="StyleByDIVYA Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@stylebydivya.in</p>
+                <p>Phone:+91 9813484649</p>
+                <p>Address: Mini secretariat jhajjar Haryana-124103</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/+91 98134 84649" aria-label="WhatsApp"><img src="designs/whatsapp.svg" alt="WhatsApp"></a>
+                    <a href="https://www.instagram.com/_stylebydivya?igsh=MTliYmp5ODgyMjk3eg==" aria-label="Instagram"><img src="designs/instagram.svg" alt="Instagram"></a>
+                    <a href="www.linkedin.com/in/divya-parashar28" aria-label="LinkedIn"><img src="designs/linkedin.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StyleByDIVYA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
