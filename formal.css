@@ -505,6 +505,10 @@ h1 {
         padding: 40px 0px;
     }
 
+    .product-section {
+        padding: 40px 15px;
+    }
+
     .section h2 {
         font-size: 1.8rem;
         margin-bottom: 30px;
@@ -822,6 +826,25 @@ h1 {
     color: #fff;
 }
 
+.investment-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.investment-heading {
+    font-size: 1.8rem;
+    color: #61dafb;
+    margin-bottom: 20px;
+}
+
+.investment-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
 @media screen and (max-width: 768px) {
     .product-grid {
         grid-template-columns: 1fr;
@@ -865,6 +888,18 @@ h1 {
     .care-instructions-table td,
     .care-instructions-table th {
         white-space: nowrap;
+    }
+    .investment-section {
+        margin: 30px 0;
+        padding: 0 25px;
+    }
+
+    .investment-heading {
+        font-size: 1.5rem;
+    }
+
+    .investment-text {
+        font-size: 1rem;
     }
 }
 
