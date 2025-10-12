@@ -7,7 +7,8 @@ body {
     color: #fff;
     min-height: 100vh;
     overflow-y: auto;
-    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #carousel-container {
@@ -279,7 +280,7 @@ h1 {
     position: relative;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 3rem;
+    padding: 0;
 }
 
 .gallery {
@@ -469,7 +470,7 @@ h1 {
     }
 
     .carousel-container {
-        padding: 0 1rem;
+        padding: 0 0rem;
     }
 
     .gallery {
@@ -501,7 +502,7 @@ h1 {
 
 @media screen and (max-width: 480px) {
     .section {
-        padding: 40px 15px;
+        padding: 40px 0px;
     }
 
     .section h2 {
@@ -521,7 +522,7 @@ h1 {
 .site-footer {
     background-color: #0d0d0d;
     color: #e0e0e0;
-    padding: 60px 40px;
+    padding: 60px 0px;
     font-size: 0.95rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -628,7 +629,7 @@ h1 {
 
 @media screen and (max-width: 768px) {
     .site-footer {
-        padding: 40px 20px;
+        padding: 40px 0px;
     }
 
     .footer-content {
@@ -671,7 +672,7 @@ h1 {
 }
 
 .product-section {
-    padding: 80px 40px;
+    padding: 80px 0px;
     max-width: 1200px;
     margin: 0 auto;
 }
