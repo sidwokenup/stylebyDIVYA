@@ -6,7 +6,6 @@ body {
     background-color: #121212;
     color: #fff;
     min-height: 100vh;
-    overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
 }
@@ -21,7 +20,6 @@ body {
     display: flex;
     flex-direction: column;
     transition: background-color 1s ease-in-out;
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -790,10 +788,58 @@ h1 {
     background-color: #fff;
 }
 
+/* Care Instructions Table */
+.care-instructions-heading {
+    font-size: 1.8rem;
+    color: #61dafb;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.table-container {
+    margin: 20px auto 40px auto;
+    max-width: 800px;
+    display: block;
+}
+
+.care-instructions-table {
+    border-collapse: collapse;
+    border: 1px solid #444;
+}
+
+.care-instructions-table th,
+.care-instructions-table td {
+    padding: 12px 15px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
+.care-instructions-table th {
+    background-color: #61dafb20;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
 @media screen and (max-width: 768px) {
     .product-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .product-details {
+        display: block !important;
+    }
+
+    .product-description {
+        display: block !important;
+    }
+
+    .add-to-cart-btn {
+        display: block !important;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
     }
 
     .product-details h1 {
@@ -805,9 +851,25 @@ h1 {
         height: 60px;
     }
 
-    .add-to-cart-btn {
-        width: 100%;
-        padding: 12px 20px;
-        font-size: 1rem;
+    /* Responsive Styles */
+    .table-container {
+        overflow-x: auto;
+        max-width: 100%;
     }
+
+    .care-instructions-table {
+        min-width: 600px;
+    }
+
+    .care-instructions-table td,
+    .care-instructions-table th {
+        white-space: nowrap;
+    }
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #ffd700; /* Gold color for highlighting */
+    margin-bottom: 20px;
+    text-align: left;
 }
