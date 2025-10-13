@@ -921,3 +921,40 @@ h1 {
     margin-bottom: 20px;
     text-align: left;
 }
+
+@media (max-width: 600px) {
+  .care-instructions-table td,
+  .care-instructions-table th {
+    white-space: normal;
+    word-break: break-word;
+    padding: 8px;
+  }
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    font-size: 1rem;
+    color: #888;
+}
+
+.discounted-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #E94560;
+}
+
+.offer-badge {
+    background-color: #FFC300;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
